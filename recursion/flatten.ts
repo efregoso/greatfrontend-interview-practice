@@ -14,7 +14,7 @@ export default function flatten(value: Array<ArrayValue>): Array<any> {
   let resultArray: Array<any> = [];
   for (const val of value) {
     // Check if an array or an element.
-    if (!val?.length || typeof val === "string") {
+    if (!Array.isArray(val)) {
       resultArray = resultArray.concat(val);
     } else {
       resultArray = resultArray.concat(flatten(val));
@@ -24,7 +24,5 @@ export default function flatten(value: Array<ArrayValue>): Array<any> {
   }
   return resultArray;
 
-
-  // Next time: Try 
 }
 
